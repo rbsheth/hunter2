@@ -17,7 +17,7 @@ for job in job_data['jobs'][1:-1]:
     blacklisted_toolchains.append(toolchain)
 
 project_dir = 'cmake/projects/' + project
-os.makedirs(project_dir + "/ci", exist_ok=True)
+os.makedirs(project_dir + "/ci")
 
 blacklist_path = project_dir + '/ci/blacklist.json'
 with open(blacklist_path, 'w') as file:
