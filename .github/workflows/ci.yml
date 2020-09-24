@@ -109,8 +109,8 @@ jobs:
     - name: Check in blacklist
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        branch: pr.pkg.${{ matrix.example }}
-        file_pattern: blacklist.json        
+        branch: master
+        file_pattern: cmake/projects/**
 
     #- name: Deploy job status to GitHub Pages
     #  uses: peaceiris/actions-gh-pages@v3.7.0-8
