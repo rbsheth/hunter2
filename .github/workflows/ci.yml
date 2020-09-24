@@ -106,11 +106,17 @@ jobs:
         echo '${{ steps.get_job_data.outputs.data }}' > job_data.json
         python .github/workflows/set_status.py
 
-    - name: Deploy job status to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3.7.0-8
+    - name: Check in blacklist
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: job_data
-        destination_dir: _data/projects
-        keep_files: true
-        enable_jekyll: true
+        branch: pr.pkg.${{ matrix.example }}
+        file_pattern: blacklist.json        
+
+    #- name: Deploy job status to GitHub Pages
+    #  uses: peaceiris/actions-gh-pages@v3.7.0-8
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    publish_dir: job_data
+    #    destination_dir: _data/projects
+    #    keep_files: true
+    #    enable_jekyll: true
