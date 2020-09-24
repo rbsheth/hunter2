@@ -111,6 +111,7 @@ jobs:
     - name: Check in blacklist
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
+        commit_message: Update package blacklist
         branch: master
         file_pattern: cmake/projects/**
 
