@@ -91,6 +91,8 @@ jobs:
 
     - name: Git checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Get job status via GitHub API
       uses: octokit/request-action@v2.x
