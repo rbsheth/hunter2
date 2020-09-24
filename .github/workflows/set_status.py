@@ -12,7 +12,7 @@ except IOError:
 blacklisted_toolchains = []
 
 for job in job_data['jobs'][1:-1]:
-  toolchain = job['name'].split(" ")[1]
+  (project, toolchain, runner) = job['name'].split(" ")
   if job['conclusion'] == "failure":
     blacklisted_toolchains.append(toolchain)
 
@@ -21,4 +21,4 @@ os.makedirs(project_dir + "/ci", exist_ok=True)
 
 blacklist_path = project_dir + '/ci/blacklist.json'
 with open(blacklist_path, 'w') as file:
-  json.dumps({"blacklist":blacklisted_toolchains}, file, indent=4, sort_keys=True)
+  file.write(json.dumps({"blacklist":blacklisted_toolchains}, indent=4, sort_keys=True))
